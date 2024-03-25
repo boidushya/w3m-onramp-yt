@@ -11,10 +11,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
-const projectId = ""; // Replace with your own project ID from cloud.walletconnect.com
+const projectId = import.meta.env.VITE_PROJECT_ID || ""; // Replace with your own project ID from cloud.walletconnect.com
 
 if (!projectId) {
-  throw new Error("Please provide a project ID in main.tsx");
+  throw new Error(
+    "Please provide a project ID in main.tsx or environment variable VITE_PROJECT_ID"
+  );
 }
 
 const metadata = {
